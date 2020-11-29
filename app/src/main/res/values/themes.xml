@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MovieApp" parent="Theme.MovieApp.Base"/>
+
+    <style name="Theme.MovieApp.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor">?android:colorBackground</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">?android:colorBackground</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>
 
-            <item name="colorPrimary">@color/primarySalmon</item>
-            <item name="colorOnPrimary">@android:color/white</item>
-            <item name="android:colorBackground">@android:color/white</item>
-            <item name="colorOnBackground">@color/grey80</item>
-            <item name="colorSurface">@android:color/white</item>
-            <item name="colorOnSurface">@color/grey80</item>
-            <item name="colorPrimaryVariant">@color/salmon90</item>
+        <item name="colorPrimary">@color/primarySalmon</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="colorOnBackground">@color/grey_800</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">@color/grey_800</item>
+        <item name="colorPrimaryVariant">@color/salmon_900</item>
 
+        <!--Typography-->
+        <item name="textAppearanceHeadline2">@style/TextAppearance.MovieApp.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.MovieApp.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.MovieApp.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.MovieApp.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MovieApp.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MovieApp.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.MovieApp.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.MovieApp.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.MovieApp.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.MovieApp.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.MovieApp.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.MovieApp.Overline</item>
     </style>
+
 </resources>

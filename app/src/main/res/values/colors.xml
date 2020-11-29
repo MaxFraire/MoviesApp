@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="grey90">#2b313a</color>
-    <color name="grey80">#333A45</color>
-    <color name="grey70">#3b4350</color>
-    <color name="grey60">#444d5c</color>
+    <color name="grey_900">#2b313a</color>
+    <color name="grey_800">#333A45</color>
+    <color name="grey_700">#3b4350</color>
+    <color name="grey_600">#444d5c</color>
 
+    <color name="salmon_900">#d27b5e</color>
+    <color name="salmon_800">#d6886d</color>
     <color name="primarySalmon">#db947c</color>
-    <color name="salmon90">#d27b5e</color>
-    <color name="salmon80">#d6886d</color>
-    <color name="salmon60">#dfa18c</color>
-    <color name="salmon50">#e3ad9b</color>
-    <color name="salmon40">#e7baaa</color>
-    <color name="salmon30">#ecc6ba</color>
-    <color name="salmon20">#f0d3c9</color>
+    <color name="salmon_600">#dfa18c</color>
+    <color name="salmon_500">#e3ad9b</color>
+    <color name="salmon_400">#e7baaa</color>
+    <color name="salmon_300">#ecc6ba</color>
+    <color name="salmon_200">#f0d3c9</color>
 
 </resources>

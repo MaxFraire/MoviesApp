@@ -1,4 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="TextAppearance.MovieApp.Headline1" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">?colorOnSurface</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/color_on_surface_disabled</item>
+    </style>
+
+    <style name="TextAppearance.MovieApp.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
 </resources>

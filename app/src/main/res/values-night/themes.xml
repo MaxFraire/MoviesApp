@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:fontFamily">@android:robo</item>
+    <style name="Theme.MovieApp" parent="Theme.MovieApp.Base">
         <item name="android:statusBarColor">?android:colorBackground</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
 
-        <item name="colorPrimary">@color/salmon20</item>
-        <item name="colorOnPrimary">@color/grey80</item>
-        <item name="android:colorBackground">@color/grey90</item>
+        <item name="colorPrimary">@color/salmon_200</item>
+        <item name="colorOnPrimary">@color/grey_800</item>
+        <item name="android:colorBackground">@color/grey_900</item>
         <item name="colorOnBackground">@android:color/white</item>
-        <item name="colorSurface">@color/grey80</item>
+        <item name="colorSurface">@color/grey_900</item>
         <item name="colorOnSurface">@android:color/white</item>
-        <item name="colorPrimaryVariant">@color/salmon40</item>
+        <item name="colorPrimaryVariant">@color/salmon_400</item>
     </style>
 </resources>
