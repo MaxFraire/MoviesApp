@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">?android:colorBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+            <item name="colorPrimary">@color/primarySalmon</item>
+            <item name="colorOnPrimary">@android:color/white</item>
+            <item name="android:colorBackground">@android:color/white</item>
+            <item name="colorOnBackground">@color/grey80</item>
+            <item name="colorSurface">@android:color/white</item>
+            <item name="colorOnSurface">@color/grey80</item>
+            <item name="colorPrimaryVariant">@color/salmon90</item>
+
+    </style>
+</resources>
