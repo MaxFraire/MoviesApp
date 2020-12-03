@@ -6,9 +6,9 @@
     <style name="Theme.MovieApp.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor">?android:colorBackground</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:navigationBarColor">?android:colorBackground</item>
+        <item name="android:navigationBarColor">?colorSurface</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
-        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>
+<!--        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>-->
 
         <item name="colorPrimary">@color/primarySalmon</item>
         <item name="colorOnPrimary">@android:color/white</item>

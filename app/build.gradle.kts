@@ -19,6 +19,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     buildFeatures {
         dataBinding = true
     }
@@ -36,9 +45,6 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Libs.core)
-    implementation(Libs.kotlinStandarLibrary)
-    implementation(Libs.appcompat)
-    implementation(Libs.material)
-    implementation(Libs.constraintLayout)
+    dependencies(Dependencies.androidCore)
+    dependencies(Dependencies.androidUI)
 }
