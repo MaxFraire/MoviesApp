@@ -21,6 +21,7 @@ object Versions {
     const val fragment = "1.2.5"
     const val recyclerView = "1.1.0"
     const val dagger = "2.28"
+    const val navigation = "2.3.2"
 
     /* test */
     const val junit = "4.12"
@@ -35,6 +36,9 @@ object Libs {
     const val material = "com.google.android.material:material:${Versions.material}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+
+    const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
 
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
@@ -58,6 +62,10 @@ object Dependencies {
         put(Libs.constraintLayout, IMPLEMENTATION)
         put(Libs.material, IMPLEMENTATION)
         put(Libs.fragment, IMPLEMENTATION)
+        put(Libs.activity, IMPLEMENTATION)
+
+        put(Libs.navigationUI, IMPLEMENTATION)
+        put(Libs.navigationFragment, IMPLEMENTATION)
 
         put(Libs.daggerAndroid, IMPLEMENTATION)
         put(Libs.daggerAndroidSupport, IMPLEMENTATION)

@@ -5,6 +5,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.maxfraire.movies.R
 import com.maxfraire.movies.databinding.ActivityMainBinding
 import dagger.android.support.DaggerAppCompatActivity
@@ -20,15 +25,8 @@ class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.navBar.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.nav_movies -> Toast.makeText(this, "movies", Toast.LENGTH_SHORT).show()
-                R.id.nav_tv_shows -> Toast.makeText(this, "shows", Toast.LENGTH_SHORT).show()
-                R.id.nav_favorites -> Toast.makeText(this, "fav", Toast.LENGTH_SHORT).show()
-                R.id.nav_search -> Toast.makeText(this, "search", Toast.LENGTH_SHORT).show()
-            }
-            true
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        binding.navBar.setupWithNavController(navHostFragment.navController)
 
     }
 

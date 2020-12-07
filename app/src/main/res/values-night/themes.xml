@@ -7,11 +7,14 @@
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
 
         <item name="colorPrimary">@color/salmon_200</item>
+        <item name="colorPrimaryVariant">@color/salmon_400</item>
         <item name="colorOnPrimary">@color/grey_800</item>
         <item name="android:colorBackground">@color/grey_900</item>
         <item name="colorOnBackground">@android:color/white</item>
         <item name="colorSurface">@color/grey_900</item>
         <item name="colorOnSurface">@android:color/white</item>
-        <item name="colorPrimaryVariant">@color/salmon_400</item>
+        <item name="colorPrimarySurface">@color/grey_800</item>
+        <item name="colorOnPrimarySurface">@android:color/white</item>
     </style>
+
 </resources>
