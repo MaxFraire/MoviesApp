@@ -1,4 +1,4 @@
-package com.maxfraire.movies.core
+package com.maxfraire.movies.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

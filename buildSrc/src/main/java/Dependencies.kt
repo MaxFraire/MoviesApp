@@ -19,12 +19,15 @@ object Versions {
     const val constraintLayout = "1.1.3"
     const val activity = "1.1.0"
     const val fragment = "1.2.5"
+    const val lifecycle = "2.2.0"
     const val recyclerView = "1.1.0"
     const val dagger = "2.28"
     const val navigation = "2.3.2"
-
-    /* test */
-    const val junit = "4.12"
+    const val retrofit ="2.9.0"
+    const val httpProfiler = "1.0.7"
+    const val coroutines = "1.4.2"
+    const val paging = "3.0.0-alpha11"
+    const val glide = "4.11.0"
 }
 
 object Libs {
@@ -34,6 +37,11 @@ object Libs {
     const val activity = "androidx.activity:activity-ktx:${Versions.activity}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val lifeCycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+    const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+    const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
@@ -44,43 +52,83 @@ object Libs {
     const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
 
-}
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val okHttpProfiler = "com.itkacher.okhttpprofiler:okhttpprofiler:${Versions.httpProfiler}"
 
-object Dependencies {
-    private const val IMPLEMENTATION = "implementation"
-    private const val KAPT = "kapt"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
 
-    val androidCore = HashMap<String, String>().apply {
-        put(Libs.kotlinStandarLibrary, IMPLEMENTATION)
-        put(Libs.core, IMPLEMENTATION)
-        put(Libs.dagger, IMPLEMENTATION)
-        put(AnnotationProcessors.daggerCompiler, KAPT)
-    }
+    const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 
-    val androidUI = HashMap<String, String>().apply {
-        put(Libs.appcompat, IMPLEMENTATION)
-        put(Libs.constraintLayout, IMPLEMENTATION)
-        put(Libs.material, IMPLEMENTATION)
-        put(Libs.fragment, IMPLEMENTATION)
-        put(Libs.activity, IMPLEMENTATION)
-
-        put(Libs.navigationUI, IMPLEMENTATION)
-        put(Libs.navigationFragment, IMPLEMENTATION)
-
-        put(Libs.daggerAndroid, IMPLEMENTATION)
-        put(Libs.daggerAndroidSupport, IMPLEMENTATION)
-        put(AnnotationProcessors.daggerAndroidProcessor, KAPT)
-    }
-
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
 
 object AnnotationProcessors {
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 }
 
-object TestLibs {
-    const val junit = "junit:junit:${Versions.junit}"
+
+object Dependencies {
+    private const val IMPLEMENTATION = "implementation"
+    private const val KAPT = "kapt"
+
+    val kotlin = HashMap<String, String>().apply {
+        put(Libs.kotlinStandarLibrary, IMPLEMENTATION)
+    }
+
+    val androidx = HashMap<String, String>().apply {
+        put(Libs.core, IMPLEMENTATION)
+        put(Libs.appcompat, IMPLEMENTATION)
+        put(Libs.fragment, IMPLEMENTATION)
+        put(Libs.activity, IMPLEMENTATION)
+        put(Libs.constraintLayout, IMPLEMENTATION)
+        put(Libs.material, IMPLEMENTATION)
+        put(Libs.recyclerView, IMPLEMENTATION)
+    }
+
+    val lifecycle = HashMap<String, String>().apply {
+        put(Libs.lifeCycleExtensions, IMPLEMENTATION)
+        put(Libs.lifecycleRuntime, IMPLEMENTATION)
+        put(Libs.lifecycleLiveData, IMPLEMENTATION)
+        put(Libs.lifecycleViewModel, IMPLEMENTATION)
+    }
+
+    val paging = HashMap<String, String>().apply {
+        put(Libs.paging, IMPLEMENTATION)
+    }
+
+    val navigation = HashMap<String, String>().apply {
+        put(Libs.navigationUI, IMPLEMENTATION)
+        put(Libs.navigationFragment, IMPLEMENTATION)
+    }
+
+    val network = HashMap<String, String>().apply {
+        put(Libs.retrofit, IMPLEMENTATION)
+        put(Libs.retrofitGsonConverter, IMPLEMENTATION)
+        put(Libs.okHttpProfiler, IMPLEMENTATION)
+    }
+
+    val coroutines = HashMap<String, String>().apply {
+        put(Libs.coroutinesCore, IMPLEMENTATION)
+        put(Libs.coroutinesAndroid, IMPLEMENTATION)
+    }
+
+    val dagger = HashMap<String, String>().apply {
+        put(Libs.dagger, IMPLEMENTATION)
+        put(AnnotationProcessors.daggerCompiler, KAPT)
+        put(Libs.daggerAndroid, IMPLEMENTATION)
+        put(Libs.daggerAndroidSupport, IMPLEMENTATION)
+        put(AnnotationProcessors.daggerAndroidProcessor, KAPT)
+    }
+
+    val glide = HashMap<String, String>().apply {
+        put(Libs.glide, IMPLEMENTATION)
+        put(AnnotationProcessors.glideCompiler, KAPT)
+    }
 }
 
 fun DependencyHandler.dependencies(map: HashMap<String, String>) {

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.maxfraire.movies.ui.movies_list.MoviesViewModel" />
+
+        <variable
+            name="movie"
+            type="com.maxfraire.movies.ui.models.MovieUI" />
+
+    </data>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_movie_list_item"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="12dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_poster"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:image_url="@{movie.posterPath}"
+                    android:contentDescription="@string/content_description_poster"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?textAppearanceBody1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_poster"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

@@ -1,6 +1,6 @@
-package com.maxfraire.movies.main.application
+package com.maxfraire.movies
 
-import com.maxfraire.movies.main.application.DaggerAppComponent.builder
+import com.maxfraire.movies.di.DaggerAppComponent.builder
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 

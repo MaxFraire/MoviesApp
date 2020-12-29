@@ -1,4 +1,4 @@
-package com.maxfraire.movies.core.di
+package com.maxfraire.movies.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

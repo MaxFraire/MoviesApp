@@ -1,17 +1,18 @@
-package com.maxfraire.movies.main.application
+package com.maxfraire.movies.di
 
 import android.app.Application
-import com.maxfraire.movies.main.main_activity.MainActivityModule
+import com.maxfraire.movies.MoviesApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
-import javax.inject.Singleton
+import javax.inject.Scope
 
-@Singleton
+@ApplicationScope
 @Component(modules = [
     AppModule::class,
+    ApiModule::class,
     AndroidInjectionModule::class
 ])
 interface AppComponent: AndroidInjector<MoviesApplication>{
@@ -24,5 +25,9 @@ interface AppComponent: AndroidInjector<MoviesApplication>{
     }
 }
 
-@Module(includes = [MainActivityModule::class])
+@Module(includes = [ActivityBuildersModule::class])
 class AppModule
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ApplicationScope

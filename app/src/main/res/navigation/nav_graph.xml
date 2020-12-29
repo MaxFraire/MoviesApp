@@ -7,13 +7,28 @@
 
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.maxfraire.movies.movies.MoviesFragment"
-        android:label="movies_fragment"
-        tools:layout="@layout/movies_fragment" />
+        android:name="com.maxfraire.movies.ui.movies_list.MoviesFragment"
+        android:label="MoviesFragment"
+        tools:layout="@layout/movies_fragment" >
+
+        <action
+            android:id="@+id/action_moviesFragment_to_seeAllMoviesFragment"
+            app:destination="@id/seeAllMoviesFragment" />
+        <argument
+            android:name="movieListType"
+            app:argType="com.maxfraire.movies.ui.models.MovieListTypeUI" />
+    </fragment>
+
     <fragment
-        android:id="@+id/tvShowsFragment"
-        android:name="com.maxfraire.movies.tv_shows.TvShowsFragment"
-        android:label="tv_shows_fragment"
-        tools:layout="@layout/tv_shows_fragment" />
+        android:id="@+id/seeAllMoviesFragment"
+        android:name="com.maxfraire.movies.ui.see_all.SeeAllMoviesFragment"
+        android:label="SeeAllMoviesFragment"
+        tools:layout="@layout/see_all_movies_fragment" >
+
+        <argument
+            android:name="moviesListType"
+            app:argType="com.maxfraire.movies.ui.models.MovieListTypeUI"
+            app:nullable="false" />
+    </fragment>
 
 </navigation>

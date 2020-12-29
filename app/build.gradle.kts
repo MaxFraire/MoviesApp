@@ -46,8 +46,13 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    dependencies(Dependencies.androidCore)
-    dependencies(Dependencies.androidUI)
+    dependencies(Dependencies.kotlin)
+    dependencies(Dependencies.androidx)
+    dependencies(Dependencies.lifecycle)
+    dependencies(Dependencies.navigation)
+    dependencies(Dependencies.paging)
+    dependencies(Dependencies.network)
+    dependencies(Dependencies.dagger)
+    dependencies(Dependencies.coroutines)
+    dependencies(Dependencies.glide)
 }

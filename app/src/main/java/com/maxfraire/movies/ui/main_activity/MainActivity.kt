@@ -1,14 +1,10 @@
-package com.maxfraire.movies.main.main_activity
+package com.maxfraire.movies.ui.main_activity
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.maxfraire.movies.R
 import com.maxfraire.movies.databinding.ActivityMainBinding
