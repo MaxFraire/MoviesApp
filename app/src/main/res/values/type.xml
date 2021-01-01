@@ -27,7 +27,8 @@
     </style>
 
     <style name="TextAppearance.MovieApp.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">?colorOnSurface</item>
     </style>
 
@@ -43,11 +44,13 @@
     </style>
 
     <style name="TextAppearance.MovieApp.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">18sp</item>
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textColor">?colorOnSurface</item>
     </style>
 
     <style name="TextAppearance.MovieApp.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">18sp</item>
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">?colorOnSurface</item>
     </style>

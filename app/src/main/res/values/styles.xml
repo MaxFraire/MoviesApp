@@ -1,3 +1,25 @@
 <resources>
 
+
+    <style name="Widget.MoviesApp.Button" parent="Widget.MaterialComponents.Button"/>
+
+    <style name="Widget.MoviesApp.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minHeight">24dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+    </style>
+
+    <style name="Widget.MoviesApp.Button.TextButton.IconButton">
+        <item name="android:minWidth">24dp</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconSize">24dp</item>
+        <item name="iconTint">?colorOnSurface</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
 </resources>

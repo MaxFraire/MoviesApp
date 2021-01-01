@@ -2,6 +2,7 @@ package com.maxfraire.movies.di
 
 import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor
 import com.maxfraire.movies.BuildConfig
+import com.maxfraire.movies.data.common.interceptor.MoviesAppRequestInterceptor
 import com.maxfraire.movies.data.remote.api.MoviesAPI
 import com.maxfraire.movies.util.Constants
 import dagger.Module
@@ -32,10 +33,12 @@ class ApiModule {
 
     @Provides
     @ApplicationScope
-    fun provideOkHttpClient(): OkHttpClient {
-        val okHttpClientBuilder = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
-            okHttpClientBuilder.addInterceptor(OkHttpProfilerInterceptor())
+    fun provideOkHttpClient(moviesAppRequestInterceptor: MoviesAppRequestInterceptor): OkHttpClient {
+        val okHttpClientBuilder = OkHttpClient.Builder().apply {
+            addInterceptor(moviesAppRequestInterceptor)
+            if (BuildConfig.DEBUG) {
+                addInterceptor(OkHttpProfilerInterceptor())
+            }
         }
         return okHttpClientBuilder.build()
     }
@@ -44,5 +47,10 @@ class ApiModule {
     @ApplicationScope
     fun provideMovieService(retrofit: Retrofit) =
         retrofit.create(MoviesAPI::class.java);
+
+    @Provides
+    @ApplicationScope
+    fun providesMoviesAppInterceptor(): MoviesAppRequestInterceptor =
+        MoviesAppRequestInterceptor()
 
 }

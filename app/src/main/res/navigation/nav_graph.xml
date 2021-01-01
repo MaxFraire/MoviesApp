@@ -10,7 +10,6 @@
         android:name="com.maxfraire.movies.ui.movies_list.MoviesFragment"
         android:label="MoviesFragment"
         tools:layout="@layout/movies_fragment" >
-
         <action
             android:id="@+id/action_moviesFragment_to_seeAllMoviesFragment"
             app:destination="@id/seeAllMoviesFragment" />

@@ -43,7 +43,6 @@ abstract class MainActivityFragmentsBuildersModule {
     abstract fun contributeSeeAllMoviesFragment(): SeeAllMoviesFragment
 }
 
-
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
 annotation class MainActivityScope

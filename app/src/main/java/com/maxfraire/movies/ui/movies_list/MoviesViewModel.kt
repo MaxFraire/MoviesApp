@@ -1,10 +1,12 @@
 package com.maxfraire.movies.ui.movies_list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maxfraire.movies.data.MoviesRepository
+import com.maxfraire.movies.data.common.doIfLoading
 import com.maxfraire.movies.data.common.doIfSuccess
 import com.maxfraire.movies.ui.models.MovieListTypeUI
 import com.maxfraire.movies.ui.models.MovieUI
@@ -50,9 +52,8 @@ class MoviesViewModel @Inject constructor(
         }
     }
 
-
-    fun navigateToSeeAllFragment(listType: MovieListTypeUI) {
-        _navigateToSeeAll.value = Event(listType)
+    fun navigateToSeeAllFragment(movieListType: MovieListTypeUI) {
+        _navigateToSeeAll.value = Event(movieListType)
     }
 
     companion object {

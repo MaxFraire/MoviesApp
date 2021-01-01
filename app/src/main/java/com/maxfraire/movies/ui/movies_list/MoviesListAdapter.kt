@@ -27,6 +27,7 @@ class MoviesListAdapter(
                         false
                     ).apply {
                         viewModel = this@MoviesListAdapter.viewModel
+                        listType = this@MoviesListAdapter.listType
                     }
                 )
             else ->
@@ -44,9 +45,7 @@ class MoviesListAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is MovieListViewHolder -> holder.bind(getItem(position))
-            is SeeAllViewHolder -> holder.itemView.rootView.setOnClickListener {
-               viewModel.navigateToSeeAllFragment(listType)
-            }
+            is SeeAllViewHolder ->  {}
         }
     }
 

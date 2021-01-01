@@ -7,6 +7,10 @@
             name="viewModel"
             type="com.maxfraire.movies.ui.movies_list.MoviesViewModel" />
 
+        <variable
+            name="listType"
+            type="com.maxfraire.movies.ui.models.MovieListTypeUI" />
+
     </data>
 
         <com.google.android.material.card.MaterialCardView
@@ -16,14 +20,13 @@
             android:layout_marginEnd="8dp"
             android:clickable="true"
             android:focusable="true"
+            android:onClick="@{() -> viewModel.navigateToSeeAllFragment(listType)}"
             app:cardCornerRadius="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/see_all"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:drawableTop="@drawable/ic_arrow_forward"
                     android:textAppearance="?textAppearanceBody1"
                     android:drawableTint="?colorOnSurface"

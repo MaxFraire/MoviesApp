@@ -4,6 +4,7 @@ import com.maxfraire.movies.data.remote.models.GenreDTO
 import com.maxfraire.movies.data.remote.models.MovieDTO
 import com.maxfraire.movies.data.remote.models.MovieListType
 import com.maxfraire.movies.util.Constants
+import com.maxfraire.movies.util.getYear
 import javax.inject.Inject
 
 class MoviesUIDataMapper @Inject constructor() {
@@ -13,8 +14,7 @@ class MoviesUIDataMapper @Inject constructor() {
             id = movieDto.id ?: 0,
             title = movieDto.title.orEmpty(),
             originalTitle = movieDto.originalTitle.orEmpty(),
-//            genres = movieDto.genres.map { convert(it) },
-            releaseDate = movieDto.releaseDate.orEmpty(),
+            releaseDate = movieDto.releaseDate.orEmpty().getYear(),
             voteAverage = movieDto.voteAverage.orEmpty(),
             overview = movieDto.overview.orEmpty(),
             runtime = movieDto.runtime.orEmpty(),

@@ -19,6 +19,8 @@ class MoviesFragment : BaseFragment<MoviesFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+
         popularMoviesAdapter = MoviesListAdapter(viewModel, MovieListTypeUI.Popular)
         upcomingMoviesAdapter = MoviesListAdapter(viewModel, MovieListTypeUI.Upcoming)
         binding.rvPopularMovies.adapter = popularMoviesAdapter

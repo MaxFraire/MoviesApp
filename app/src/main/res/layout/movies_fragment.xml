@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.maxfraire.movies.ui.movies_list.MoviesViewModel" />
+
+        <import type="com.maxfraire.movies.ui.models.MovieListTypeUI"/>
 
     </data>
 
@@ -13,14 +17,23 @@
 
         <TextView
             android:id="@+id/tv_title_popular"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?textAppearanceHeadline4"
             android:text="@string/popular"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/b_see_all_popular"
+            style="@style/Widget.MoviesApp.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_all"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_popular"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular_movies"
@@ -28,14 +41,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:orientation="horizontal"
+            android:clipToPadding="false"
+            android:clipChildren="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="@id/tv_title_popular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title_popular"/>
 
-
         <TextView
-            android:id="@+id/tv_title_in_theaters"
+            android:id="@+id/tv_title_upcoming"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?textAppearanceHeadline4"
@@ -44,16 +58,27 @@
             app:layout_constraintStart_toStartOf="@id/tv_title_popular"
             app:layout_constraintTop_toBottomOf="@id/rv_popular_movies"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/b_see_all_upcoming"
+            style="@style/Widget.MoviesApp.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_all"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_upcoming"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_upcoming"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:orientation="horizontal"
+            android:clipToPadding="false"
+            android:clipChildren="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="@id/tv_title_in_theaters"
+            app:layout_constraintStart_toStartOf="@id/tv_title_upcoming"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title_in_theaters"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_title_upcoming"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

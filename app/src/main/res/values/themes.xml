@@ -37,6 +37,9 @@
         <item name="textAppearanceButton">@style/TextAppearance.MovieApp.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MovieApp.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MovieApp.Overline</item>
+
+        <!-- Shape -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MoviesApp.SmallComponent</item>
     </style>
 
 </resources>
