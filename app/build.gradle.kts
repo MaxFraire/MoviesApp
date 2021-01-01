@@ -17,6 +17,8 @@ android {
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
 
+        buildConfigField("String", "TMDB_API_KEY","\"" + project.properties["MOVIES_APP_TMDB_API_KEY"] + "\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -55,4 +57,6 @@ dependencies {
     dependencies(Dependencies.dagger)
     dependencies(Dependencies.coroutines)
     dependencies(Dependencies.glide)
+    dependencies(Dependencies.threeTenAbp)
+    dependencies(Dependencies.timber)
 }

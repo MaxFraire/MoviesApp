@@ -1,13 +1,13 @@
 buildscript {
-    val kotlin_version by extra("1.3.72")
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:${Versions.gradle}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
+        classpath(Libs.androidGradlePlugin)
+        classpath(Libs.kotlinGradlePlugin)
+        classpath(Libs.kotlinExtensions)
+        classpath(Libs.safeArgsPlugin)
     }
 }
 
