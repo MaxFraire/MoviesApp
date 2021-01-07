@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import com.maxfraire.movies.data.remote.api.MoviesAPI
 import com.maxfraire.movies.data.remote.models.MovieDTO
 import com.maxfraire.movies.data.remote.models.MovieListType
+import timber.log.Timber
 import javax.inject.Inject
 
 class MoviePagingSourceFactory @Inject constructor(
@@ -29,6 +30,7 @@ class MoviePagingSource(
                 nextKey = response.body()?.page?.inc()
             )
         } catch (e: Exception) {
+            Timber.e("Error loading page. ${e.message}")
             LoadResult.Error(e)
         }
     }

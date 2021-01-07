@@ -28,8 +28,11 @@ class SeeAllMoviesViewModel @Inject constructor(
     private val _displayGridLayout = MutableLiveData<Boolean>(true)
     val displayGridLayout: LiveData<Boolean> = _displayGridLayout
 
-    private val _onBackPressed = MutableLiveData<Event<Any>>()
-    val onBackPressed = _onBackPressed
+    private val _navigateBack = MutableLiveData<Event<Any>>()
+    val navigateBack: LiveData<Event<Any>> = _navigateBack
+
+    private val _navigateToMovieDetails = MutableLiveData<Event<Int>>()
+    val navigateToMovieDetails = _navigateToMovieDetails
 
     init {
         _movies.addSource(_listType) { listType ->
@@ -50,8 +53,11 @@ class SeeAllMoviesViewModel @Inject constructor(
     }
 
     fun navigateBack() {
-        onBackPressed.value = Event(Any())
+        _navigateBack.value = Event(Any())
+    }
 
+    fun navigateToMovieDetails(movieId: Int) {
+        _navigateToMovieDetails.value = Event(movieId)
     }
 
 }

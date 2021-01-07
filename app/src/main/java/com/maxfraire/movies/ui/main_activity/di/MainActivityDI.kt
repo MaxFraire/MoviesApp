@@ -6,6 +6,9 @@ import com.maxfraire.movies.ui.movies_list.MoviesFragment
 import com.maxfraire.movies.ui.movies_list.di.MoviesFragmentModule
 import com.maxfraire.movies.ui.movies_list.di.MoviesFragmentScope
 import com.maxfraire.movies.ui.main_activity.MainActivityViewModel
+import com.maxfraire.movies.ui.movie_details.MovieDetailsFragment
+import com.maxfraire.movies.ui.movie_details.di.MovieDetailsFragmentModule
+import com.maxfraire.movies.ui.movie_details.di.MovieDetailsScope
 import com.maxfraire.movies.ui.see_all.SeeAllMoviesFragment
 import com.maxfraire.movies.ui.see_all.di.SeeAllMoviesFragmentModule
 import com.maxfraire.movies.ui.see_all.di.SeeAllMoviesFragmentScope
@@ -41,6 +44,10 @@ abstract class MainActivityFragmentsBuildersModule {
     @SeeAllMoviesFragmentScope
     @ContributesAndroidInjector(modules = [SeeAllMoviesFragmentModule::class])
     abstract fun contributeSeeAllMoviesFragment(): SeeAllMoviesFragment
+
+    @MovieDetailsScope
+    @ContributesAndroidInjector(modules = [MovieDetailsFragmentModule::class])
+    abstract fun contributeMovieDetailsFragment(): MovieDetailsFragment
 }
 
 @Scope

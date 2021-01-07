@@ -2,6 +2,17 @@
 
 
     <style name="Widget.MoviesApp.Button" parent="Widget.MaterialComponents.Button"/>
+    
+    <style name="Widget.MoviesApp.Chip" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipMinHeight">16dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipStrokeColor">?colorOnSecondary</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="chipBackgroundColor">?colorSecondary</item>
+        <item name="chipCornerRadius">16dp</item>
+        <item name="android:textAppearance">?textAppearanceCaption</item>
+    </style>
 
     <style name="Widget.MoviesApp.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:minHeight">24dp</item>

@@ -21,6 +21,7 @@ object Versions {
     const val fragment = "1.2.5"
     const val lifecycle = "2.2.0"
     const val recyclerView = "1.1.0"
+    const val flexbox = "2.0.1"
     const val dagger = "2.28"
     const val navigation = "2.3.2"
     const val retrofit = "2.9.0"
@@ -44,11 +45,13 @@ object Libs {
     const val activity = "androidx.activity:activity-ktx:${Versions.activity}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val flexbox = "com.google.android:flexbox:${Versions.flexbox}"
     const val lifeCycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
     const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val lifecycleViewModel =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+
 
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val constraintLayout =
@@ -107,6 +110,7 @@ object Dependencies {
         put(Libs.constraintLayout, IMPLEMENTATION)
         put(Libs.material, IMPLEMENTATION)
         put(Libs.recyclerView, IMPLEMENTATION)
+        put(Libs.flexbox, IMPLEMENTATION)
     }
 
     val lifecycle = HashMap<String, String>().apply {

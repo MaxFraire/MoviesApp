@@ -2,7 +2,7 @@ package com.maxfraire.movies.di
 
 import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor
 import com.maxfraire.movies.BuildConfig
-import com.maxfraire.movies.data.common.interceptor.MoviesAppRequestInterceptor
+import com.maxfraire.movies.data.remote.api.interceptor.MoviesAppRequestInterceptor
 import com.maxfraire.movies.data.remote.api.MoviesAPI
 import com.maxfraire.movies.util.Constants
 import dagger.Module

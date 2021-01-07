@@ -2,7 +2,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.MovieApp" parent="Theme.MovieApp.Base">
-        <item name="android:statusBarColor">?android:colorBackground</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
 
@@ -15,6 +14,8 @@
         <item name="colorOnSurface">@android:color/white</item>
         <item name="colorPrimarySurface">@color/grey_800</item>
         <item name="colorOnPrimarySurface">@android:color/white</item>
+        <item name="colorSecondary">@color/color_primary_alpha_10</item>
+        <item name="colorOnSecondary">@color/salmon_200</item>
     </style>
 
 </resources>

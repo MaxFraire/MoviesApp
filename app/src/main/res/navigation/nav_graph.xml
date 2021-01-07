@@ -12,10 +12,13 @@
         tools:layout="@layout/movies_fragment" >
         <action
             android:id="@+id/action_moviesFragment_to_seeAllMoviesFragment"
-            app:destination="@id/seeAllMoviesFragment" />
+            app:destination="@id/seeAllMoviesFragment"/>
         <argument
             android:name="movieListType"
             app:argType="com.maxfraire.movies.ui.models.MovieListTypeUI" />
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 
     <fragment
@@ -28,6 +31,21 @@
             android:name="moviesListType"
             app:argType="com.maxfraire.movies.ui.models.MovieListTypeUI"
             app:nullable="false" />
+        <action
+            android:id="@+id/action_seeAllMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.maxfraire.movies.ui.movie_details.MovieDetailsFragment"
+        android:label="MovieDetailsFragment"
+        tools:layout="@layout/movie_details_fragment" >
+
+        <argument
+            android:name="movie"
+            app:argType="integer"
+            app:nullable="false"/>
     </fragment>
 
 </navigation>

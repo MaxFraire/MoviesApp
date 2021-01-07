@@ -69,6 +69,7 @@ class MoviesListAdapter(
 
 class MovieListViewHolder(private val binding: MovieListItemBinding)
     : RecyclerView.ViewHolder(binding.root) {
+
     fun bind(movie: MovieUI){
         binding.movie = movie
     }

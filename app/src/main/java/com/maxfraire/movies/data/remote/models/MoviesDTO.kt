@@ -40,18 +40,12 @@ data class MovieDTO(
     val popularity: Double? = null,
     @SerializedName(value = "poster_path")
     val posterPath: String? = null,
-//    @SerializedName(value = "production_companies")
-//    val productionCompanyModels: List<ProductionCompanyDTO>,
-//    @SerializedName(value = "production_countries")
-//    val productionCountryModels: List<ProductionCountryDTO>,
     @SerializedName(value = "release_date")
     val releaseDate: String? = null,
     @SerializedName(value = "revenue")
     val revenue: Int? = null,
     @SerializedName(value = "runtime")
-    val runtime: String? = null,
-//    @SerializedName(value = "spoken_languages")
-//    val spokenLanguageModels: List<SpokenLanguageDTO>,
+    val runtime: Int? = null,
     @SerializedName(value = "status")
     val status: String? = null,
     @SerializedName(value = "tagline")
@@ -61,9 +55,11 @@ data class MovieDTO(
     @SerializedName(value = "video")
     val video: Boolean? = null,
     @SerializedName(value = "vote_average")
-    val voteAverage: String? = null,
+    val voteAverage: Float? = null,
     @SerializedName(value = "vote_count")
-    val voteCount: Int? = null
+    val voteCount: Int? = null,
+    @SerializedName(value = "credits")
+    val credits: CreditsDTO? = null
 )
 
 data class GenreDTO(
@@ -71,4 +67,43 @@ data class GenreDTO(
     val id: Int,
     @SerializedName(value = "name")
     val name: String
+)
+
+data class CreditsDTO(
+    @SerializedName(value = "id")
+    val id: Int? = null,
+    @SerializedName(value = "cast")
+    val cast: List<CastDTO>? = null,
+    @SerializedName(value = "crew")
+    val crew: List<CrewDTO>? = null
+)
+
+data class CastDTO(
+    @SerializedName(value = "id")
+    val id: Int? = null,
+    @SerializedName(value = "cast_id")
+    val castId: Int? = null,
+    @SerializedName(value = "credit_id")
+    val creditId: String? = null,
+    @SerializedName(value = "name")
+    val name: String? = null,
+    @SerializedName(value = "profile_path")
+    val profilePath: String? = null,
+    @SerializedName(value = "character")
+    val character: String? = null
+)
+
+data class CrewDTO(
+    @SerializedName(value = "id")
+    val id: Int,
+    @SerializedName(value = "credit_id")
+    val creditId: String,
+    @SerializedName(value = "department")
+    val department: String,
+    @SerializedName(value = "job")
+    val job: String,
+    @SerializedName(value = "name")
+    val name: String,
+    @SerializedName(value = "profile_path")
+    val profilePath: String
 )

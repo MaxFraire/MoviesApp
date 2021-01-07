@@ -13,4 +13,8 @@
     <string name="see_all">See All</string>
     <string name="content_description_poster">poster</string>
 
+    <!-- Movie Details -->
+    <string name="directed_by">Directed by <b>%s</b></string>
+    <string name="cast">Cast</string>
+
 </resources>

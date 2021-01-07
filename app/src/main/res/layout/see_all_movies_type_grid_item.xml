@@ -17,7 +17,8 @@
         android:id="@+id/cv_movie_list_item"
         android:layout_width="120dp"
         android:layout_height="160dp"
-        app:cardCornerRadius="12dp">
+        app:cardCornerRadius="12dp"
+        android:onClick="@{() -> viewModel.navigateToMovieDetails(movie.id)}" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,8 +42,8 @@
                 android:id="@+id/iv_poster"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:image_url="@{movie.posterPath}"
                 android:contentDescription="@string/content_description_poster"
+                app:imageUrl="@{movie.posterPath}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

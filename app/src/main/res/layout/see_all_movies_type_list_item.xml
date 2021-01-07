@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="8dp"
+        android:onClick="@{() -> viewModel.navigateToMovieDetails(movie.id)}"
         app:cardCornerRadius="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +37,7 @@
                 android:layout_width="80dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/content_description_poster"
-                android:image_url="@{movie.posterPath}"
+                app:imageUrl="@{movie.posterPath}"
                 app:shapeAppearance="?shapeAppearanceSmallComponent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +55,7 @@
                 app:layout_constraintStart_toEndOf="@id/iv_poster"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/iv_poster"
-                tools:text="Inception"/>
+                tools:text="Inception "/>
 
             <TextView
                 android:id="@+id/tv_release"
@@ -65,21 +66,26 @@
                 android:layout_marginTop="4dp"
                 android:textColor="@color/color_on_surface_disabled"
                 app:layout_constraintStart_toStartOf="@id/tv_movie_title"
-                app:layout_constraintTop_toBottomOf="@id/tv_movie_title"/>
+                app:layout_constraintTop_toBottomOf="@id/tv_movie_title"
+                tools:text="2020"/>
 
             <TextView
                 android:id="@+id/tv_vote_average"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{movie.voteAverage}"
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="4dp"
+                android:drawableTint="?colorPrimary"
                 android:gravity="center_vertical"
                 android:textAppearance="?textAppearanceBody1"
                 android:textColor="@color/color_on_surface_disabled"
-                android:drawablePadding="4dp"
-                android:drawableStart="@drawable/ic_star"
-                android:drawableTint="?colorPrimary"
+                android:text="@{String.valueOf(movie.voteAverage)}"
+                app:visible="@{movie.voteAverage > 0}"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintBottom_toBottomOf="@id/iv_poster"
                 app:layout_constraintStart_toStartOf="@id/tv_release"
-                app:layout_constraintBottom_toBottomOf="@id/iv_poster"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_release"
+                tools:text="8.5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,18 +8,17 @@ sealed class Resource<out T> {
     data class Loading<out R>(override val data: R) : Resource<R>()
     data class Error<out E>(
         override val data: E,
-        val message: String = "",
-        val errorCode: Int
+        val message: String = ""
     ) :
         Resource<E>()
 }
 
 inline fun <reified T> Resource<T>.doIfError(
-    callback: (data: T?, error: String?, errorCode: Int?) ->
+    callback: (data: T?, error: String?) ->
     Unit
 ): Resource<T> = this.apply {
     if (this is Resource.Error) {
-        callback(this.data, this.message, this.errorCode)
+        callback(this.data, this.message)
     }
 }
 

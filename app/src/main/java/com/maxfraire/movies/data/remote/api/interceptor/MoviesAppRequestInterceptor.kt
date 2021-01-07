@@ -1,4 +1,4 @@
-package com.maxfraire.movies.data.common.interceptor
+package com.maxfraire.movies.data.remote.api.interceptor
 
 import com.maxfraire.movies.BuildConfig
 import okhttp3.HttpUrl

@@ -33,3 +33,10 @@ fun String.getYear(): String {
         "-"
     }
 }
+
+fun Int?.getFormattedRuntime(): String {
+    return this?.let {
+        String.format("%dh %dm", it.div(60), it.rem(60))
+    } ?: "-"
+}
+

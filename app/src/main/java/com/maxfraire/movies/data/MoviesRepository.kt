@@ -41,9 +41,18 @@ class MoviesRepository @Inject constructor(
             pagingSourceFactory = { moviesPagingSourceFactory.create(movieListType) }
         ).flow
 
+    fun getMovieById(movieId: Int) : Flow<Resource<MovieDTO?>> =
+        flow {
+            emit(Resource.Loading(null))
+            val response = getResource {
+                api.fetchMovieById(movieId)
+            }
+            emit(response)
+        }.flowOn(Dispatchers.IO)
+
+
     private fun getDefaultPageConfig(): PagingConfig =
         PagingConfig(pageSize = DEFAULT_PAGE_SIZE, enablePlaceholders = false)
-
 
     companion object {
         private const val DEFAULT_PAGE_SIZE = 20
