@@ -1,21 +1,19 @@
 package com.maxfraire.movies.di
 
 import android.app.Application
-import com.maxfraire.movies.BuildConfig
 import com.maxfraire.movies.MoviesApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
-import dagger.Provides
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
-import javax.inject.Named
 import javax.inject.Scope
 
 @ApplicationScope
 @Component(modules = [
     AppModule::class,
     ApiModule::class,
+    DatabaseModule::class,
     AndroidInjectionModule::class
 ])
 interface AppComponent: AndroidInjector<MoviesApplication>{

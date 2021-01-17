@@ -8,9 +8,6 @@
         <variable
             name="viewModel"
             type="com.maxfraire.movies.ui.movie_details.MovieDetailsViewModel" />
-        <variable
-            name="movie"
-            type="com.maxfraire.movies.ui.models.MovieDetailsUI" />
 
     </data>
 
@@ -18,7 +15,9 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:fitsSystemWindows="true"
-        android:background="?android:colorBackground">
+        android:paddingBottom="@dimen/bottom_nav_bar_height"
+        android:background="?android:colorBackground"
+        >
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -50,7 +49,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
                         android:scaleType="centerCrop"
-                        app:imageUrl="@{movie.backdropPath}"
+                        app:imageUrl="@{viewModel.movie.backdropPath}"
                         android:contentDescription="@string/content_description_poster"/>
                     <View
                         android:layout_width="match_parent"
@@ -64,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:minHeight="?attr/actionBarSize"
-                    app:title="@{movie.title}"
+                    app:title="@{viewModel.movie.title}"
                     app:navigationIcon="@drawable/ic_arrow_back"
                     app:navigationOnClickListener="@{() -> viewModel.navigateBack()}"
                     app:layout_collapseMode="pin"/>
@@ -76,8 +75,6 @@
             android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?android:colorBackground"
-            android:paddingBottom="@dimen/bottom_nav_bar_height"
             android:overScrollMode="never"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
@@ -85,6 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?colorSurface"
+                    android:paddingBottom="@dimen/bottom_nav_bar_height"
                     app:animateVisibility="@{!viewModel.loading}">
 
                     <com.google.android.material.imageview.ShapeableImageView
@@ -95,7 +93,7 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginStart="16dp"
                         android:backgroundTint="?colorSurface"
-                        app:imageUrl="@{movie.posterPath}"
+                        app:imageUrl="@{viewModel.movie.posterPath}"
                         app:shapeAppearance="?shapeAppearanceSmallComponent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
@@ -106,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="8dp"
-                        android:text="@{movie.title}"
+                        android:text="@{viewModel.movie.title}"
                         android:textAppearance="?textAppearanceHeadline5"
                         android:maxLines="2"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +119,7 @@
                         android:layout_marginTop="8dp"
                         android:textAppearance="?textAppearanceSubtitle2"
                         android:textColor="@color/color_on_surface_disabled"
-                        android:text="@{movie.releaseDate}"
+                        android:text="@{viewModel.movie.releaseDate}"
                         app:layout_constraintStart_toStartOf="@id/tv_movie_title"
                         app:layout_constraintTop_toBottomOf="@+id/tv_movie_title"
                         tools:text="2010"/>
@@ -131,7 +129,7 @@
                         android:id="@+id/tv_director"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@{@string/directed_by(movie.director)}"
+                        android:text="@{@string/directed_by(viewModel.movie.director)}"
                         android:layout_marginTop="8dp"
                         android:textAppearance="?textAppearanceSubtitle2"
                         android:textColor="@color/color_on_surface_disabled"
@@ -139,8 +137,6 @@
                         app:layout_constraintEnd_toEndOf="@id/tv_movie_title"
                         app:layout_constraintStart_toStartOf="@id/tv_movie_title"
                         tools:text="Directed by Christopher Nolan"/>
-<!--                    android:text="@{@string/directed_by(movie.director.name)}"-->
-<!--                    app:animatedVisibility = "@{movie.showHeader}"-->
 
                     <TextView
                         android:id="@+id/tv_vote_average"
@@ -152,8 +148,8 @@
                         android:drawableTint="?colorPrimary"
                         android:textAppearance="?textAppearanceSubtitle2"
                         android:textColor="@color/color_on_surface_disabled"
-                        android:text="@{String.valueOf(movie.voteAverage)}"
-                        app:visible="@{movie.voteAverage > 0}"
+                        android:text="@{String.valueOf(viewModel.movie.voteAverage)}"
+                        app:visible="@{viewModel.movie.voteAverage > 0}"
                         app:layout_constraintStart_toStartOf="@+id/tv_runtime"
                         app:layout_constraintTop_toBottomOf="@+id/tv_runtime"
                         tools:text="6.7"/>
@@ -163,7 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@{movie.runtime}"
+                        android:text="@{viewModel.movie.runtime}"
                         android:textAppearance="?textAppearanceSubtitle2"
                         android:textColor="@color/color_on_surface_disabled"
                         app:layout_constraintStart_toStartOf="@+id/tv_director"
@@ -188,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:text="@{movie.overview}"
+                        android:text="@{viewModel.movie.overview}"
                         android:textAppearance="?textAppearanceBody2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/iv_movie_details_poster"
@@ -200,6 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@string/cast"
+                        app:visible="@{!viewModel.movie.cast.empty}"
                         android:textAppearance="?textAppearanceSubtitle1"
                         app:layout_constraintStart_toStartOf="@id/tv_overview"
                         app:layout_constraintTop_toBottomOf="@id/tv_overview" />
@@ -217,23 +214,21 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         </androidx.core.widget.NestedScrollView>
 
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/fab_movie_details_fragment"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="16dp"-->
-<!--            android:elevation="6dp"-->
-<!--            android:visibility="invisible"-->
-<!--            app:backgroundTint="@android:color/white"-->
-<!--            app:tint="#ff2d69"-->
-<!--            app:animatedVisibility="@{movie.showHeader}"-->
-<!--            app:layout_anchor="@id/app_bar"-->
-<!--            app:layout_anchorGravity="bottom|end"-->
-<!--            android:onClick="@{(view) -> handlers.onFavoritesClicked(view, movie)}"-->
-<!--            app:srcCompat="@{movie.isFavorite}"/>-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="8dp"
+            app:fabCustomSize="48dp"
+            android:onClick="@{() -> viewModel.toggleFavorites()}"
+            app:isFavorite="@{viewModel.movie.favorite}"
+            app:tint="?colorError"
+            app:elevation="8dp"
+            app:animateVisibility="@{!viewModel.loading}"
+            android:backgroundTint="?colorOnSurface" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

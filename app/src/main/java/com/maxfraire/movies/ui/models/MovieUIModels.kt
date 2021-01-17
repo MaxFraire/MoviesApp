@@ -30,13 +30,26 @@ data class MovieDetailsUI(
     val revenue: Int = 0,
     val runtime: String = "",
     val status: String = "",
-    val tagline: String = "",
     val title: String = "",
     val voteAverage: Float = 0f,
     val voteCount: Int = 0,
     val director: String = "",
-    val cast: List<CastUI> = emptyList()
-)
+    val cast: List<CastUI> = emptyList(),
+    var isFavorite: Boolean = false
+){
+    override fun equals(other: Any?): Boolean =
+        (other is MovieDetailsUI) &&
+                other.id == id &&
+                other.title == title &&
+                other.posterPath == posterPath
+
+    override fun hashCode(): Int {
+        var result = id
+        result = 31 * result + posterPath.hashCode()
+        result = 31 * result + title.hashCode()
+        return result
+    }
+}
 
 data class CastUI(
     val id: Int = 0,

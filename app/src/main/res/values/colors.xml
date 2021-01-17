@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="color_error">#ff2d69</color>
+
     <color name="grey_900">#2b313a</color>
     <color name="grey_800">#333A45</color>
     <color name="grey_700">#3b4350</color>
@@ -8,7 +10,7 @@
 
     <color name="salmon_900">#d27b5e</color>
     <color name="salmon_800">#d6886d</color>
-    <color name="primarySalmon">#db947c</color>
+    <color name="salmon_700">#db947c</color>
     <color name="salmon_600">#dfa18c</color>
     <color name="salmon_500">#e3ad9b</color>
     <color name="salmon_400">#e7baaa</color>

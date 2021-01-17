@@ -3,23 +3,30 @@ package com.maxfraire.movies.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.maxfraire.movies.data.common.Resource
-import com.maxfraire.movies.data.common.getResource
+import com.maxfraire.movies.data.common.*
+import com.maxfraire.movies.data.local.dao.CastDao
+import com.maxfraire.movies.data.local.dao.MoviesDao
+import com.maxfraire.movies.data.local.entities.MovieWithCastEntity
 import com.maxfraire.movies.data.remote.api.MoviesAPI
 import com.maxfraire.movies.data.remote.models.MovieDTO
 import com.maxfraire.movies.data.remote.models.MovieListType
 import com.maxfraire.movies.data.remote.models.MoviesListDTO
 import com.maxfraire.movies.data.remote.paging.MoviePagingSourceFactory
 import com.maxfraire.movies.di.ApplicationScope
+import com.maxfraire.movies.util.orDefault
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import retrofit2.Response
 import javax.inject.Inject
 
 @ApplicationScope
 class MoviesRepository @Inject constructor(
     private val api: MoviesAPI,
+    private val moviesDao: MoviesDao,
+    private val castDao: CastDao,
+    private val mapper: DataMapper,
     private val moviesPagingSourceFactory: MoviePagingSourceFactory
 ) {
 
@@ -41,15 +48,33 @@ class MoviesRepository @Inject constructor(
             pagingSourceFactory = { moviesPagingSourceFactory.create(movieListType) }
         ).flow
 
-    fun getMovieById(movieId: Int) : Flow<Resource<MovieDTO?>> =
-        flow {
-            emit(Resource.Loading(null))
-            val response = getResource {
-                api.fetchMovieById(movieId)
-            }
-            emit(response)
-        }.flowOn(Dispatchers.IO)
+    fun getMovieById(movieId: Int) : Flow<Resource<MovieWithCastEntity?>> =
+         object: NetworkBoundResource<MovieWithCastEntity, MovieDTO>() {
+             override suspend fun saveNetworkResult(item: MovieDTO?) {
+                 item?.let {
+                     moviesDao.insertMovie(mapper.convert(item))
+                     castDao.insertCast(
+                         item.credits?.cast?.map {
+                                 cast -> mapper.convert(cast, it.id.orDefault(0))
+                         }.orEmpty()
+                     )
+                 }
+             }
 
+             override fun shouldFetch(data: MovieWithCastEntity?): Boolean =
+                 data == null
+
+             override suspend fun loadFromDb(): Flow<MovieWithCastEntity?> =
+                 moviesDao.getMovieWithCast(movieId)
+
+             override suspend fun fetchFromNetwork(): Response<MovieDTO> =
+                 api.fetchMovieById(movieId)
+
+         }.asFlow()
+
+    suspend fun setFavorite(movieId: Int, isFavorite: Boolean){
+       moviesDao.favoriteMovie(movieId, isFavorite)
+    }
 
     private fun getDefaultPageConfig(): PagingConfig =
         PagingConfig(pageSize = DEFAULT_PAGE_SIZE, enablePlaceholders = false)

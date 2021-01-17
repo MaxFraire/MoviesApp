@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionManager
 import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 import com.maxfraire.movies.R
 import com.maxfraire.movies.databinding.SeeAllMoviesFragmentBinding
 import com.maxfraire.movies.ui.base.BaseFragment
+import com.maxfraire.movies.util.Constants.SHARED_AXIS_X_DURATION
 import com.maxfraire.movies.util.EventObserver
 import com.maxfraire.movies.util.GridSpacingDecoration
 import com.maxfraire.movies.util.dp
@@ -26,6 +28,16 @@ class SeeAllMoviesFragment : BaseFragment<SeeAllMoviesFragmentBinding>() {
     private val gridItemDecorator = GridSpacingDecoration(GRID_SPAN_COUNT, 8.dp, true)
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var linearLayoutManger: LinearLayoutManager
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true).apply {
+            duration = SHARED_AXIS_X_DURATION
+        }
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
+            duration = SHARED_AXIS_X_DURATION
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

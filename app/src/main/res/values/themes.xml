@@ -14,7 +14,7 @@
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
 <!--        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>-->
 
-        <item name="colorPrimary">@color/primarySalmon</item>
+        <item name="colorPrimary">@color/salmon_700</item>
         <item name="colorPrimaryVariant">@color/salmon_900</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="android:colorBackground">@android:color/white</item>
@@ -25,6 +25,7 @@
         <item name="colorOnPrimarySurface">@color/grey_800</item>
         <item name="colorSecondary">@color/color_primary_alpha_10</item>
         <item name="colorOnSecondary">@color/salmon_900</item>
+        <item name="colorError">@color/color_error</item>
 
         <!--Typography-->
         <item name="textAppearanceHeadline2">@style/TextAppearance.MovieApp.Headline2</item>

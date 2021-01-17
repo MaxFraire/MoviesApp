@@ -27,6 +27,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val httpProfiler = "1.0.7"
     const val coroutines = "1.4.2"
+    const val room = "2.2.6"
     const val paging = "3.0.0-alpha11"
     const val glide = "4.11.0"
     const val threeTenAbp = "1.3.0"
@@ -78,6 +79,9 @@ object Libs {
 
     const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 
     const val threeTenAbp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
@@ -91,6 +95,8 @@ object AnnotationProcessors {
         "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
 }
 
 
@@ -146,6 +152,12 @@ object Dependencies {
         put(Libs.daggerAndroid, IMPLEMENTATION)
         put(Libs.daggerAndroidSupport, IMPLEMENTATION)
         put(AnnotationProcessors.daggerAndroidProcessor, KAPT)
+    }
+
+    val room = HashMap<String, String>().apply {
+        put(Libs.roomRuntime, IMPLEMENTATION)
+        put(Libs.roomKtx, IMPLEMENTATION)
+        put(AnnotationProcessors.roomCompiler, KAPT)
     }
 
     val glide = HashMap<String, String>().apply {

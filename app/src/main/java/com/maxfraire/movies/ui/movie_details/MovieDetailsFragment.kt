@@ -2,9 +2,7 @@ package com.maxfraire.movies.ui.movie_details
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
@@ -15,27 +13,27 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.maxfraire.movies.R
 import com.maxfraire.movies.databinding.MovieDetailsFragmentBinding
 import com.maxfraire.movies.ui.base.BaseFragment
-import com.maxfraire.movies.ui.main_activity.MainActivityViewModel
-import com.maxfraire.movies.ui.models.CastUI
-import com.maxfraire.movies.ui.models.GenreUI
+import com.maxfraire.movies.ui.movie_details.adapters.CastAdapter
+import com.maxfraire.movies.ui.movie_details.adapters.GenresAdapter
 import com.maxfraire.movies.util.EventObserver
-import timber.log.Timber
 
 class MovieDetailsFragment : BaseFragment<MovieDetailsFragmentBinding>() {
-
     private val args: MovieDetailsFragmentArgs by navArgs()
     private val viewModel: MovieDetailsViewModel by viewModels { viewModelFactory }
-    private val activityViewModel: MainActivityViewModel by activityViewModels { viewModelFactory }
+    private lateinit var genresAdapter: GenresAdapter
+    private lateinit var castAdapter: CastAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
 
         viewModel.setMovieId(args.movie)
+
+        setAdapters()
+
         viewModel.movie.observe(viewLifecycleOwner) {
-            binding.movie = it
-            setGenres(it.genres)
-            setCast(it.cast)
+            genresAdapter.submitList(it.genres)
+            castAdapter.submitList(it.cast)
         }
 
         viewModel.onBackPressed.observe(viewLifecycleOwner, EventObserver {
@@ -47,35 +45,19 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsFragmentBinding>() {
         )
     }
 
-    private fun setGenres(genres: List<GenreUI>) {
+    private fun setAdapters() {
+        genresAdapter = GenresAdapter()
+        castAdapter = CastAdapter()
         binding.rvGenres.apply {
             layoutManager =  FlexboxLayoutManager(
                 context,
                 FlexDirection.ROW,
                 FlexWrap.WRAP
             )
-            adapter = GenresAdapter().apply {
-                submitList(genres)
-            }
+            adapter = genresAdapter
         }
-    }
 
-    private fun setCast(cast: List<CastUI>) {
-        binding.rvCast.apply {
-            adapter = CastAdapter().apply {
-                submitList(cast)
-            }
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        activityViewModel.setTranslucentStatusBar(true)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        activityViewModel.setTranslucentStatusBar(false)
+        binding.rvCast.adapter = castAdapter
     }
 
     override val layoutResId: Int

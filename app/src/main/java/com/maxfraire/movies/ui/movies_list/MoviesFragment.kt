@@ -5,17 +5,18 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.transition.MaterialSharedAxis
 import com.maxfraire.movies.R
 import com.maxfraire.movies.databinding.MoviesFragmentBinding
 import com.maxfraire.movies.ui.base.BaseFragment
 import com.maxfraire.movies.ui.models.MovieListTypeUI
+import com.maxfraire.movies.util.Constants.SHARED_AXIS_X_DURATION
 import com.maxfraire.movies.util.EventObserver
 
 class MoviesFragment : BaseFragment<MoviesFragmentBinding>() {
     private val viewModel: MoviesViewModel by viewModels { viewModelFactory }
     private lateinit var popularMoviesAdapter: MoviesListAdapter
     private lateinit var upcomingMoviesAdapter: MoviesListAdapter
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,6 +35,12 @@ class MoviesFragment : BaseFragment<MoviesFragmentBinding>() {
         viewModel.navigateToSeeAll.observe(
             viewLifecycleOwner,
             EventObserver(onEventUnhandledContent = {
+                exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true).apply {
+                    duration = SHARED_AXIS_X_DURATION
+                }
+                reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false).apply {
+                    duration = SHARED_AXIS_X_DURATION
+                }
                 findNavController().navigate(
                     MoviesFragmentDirections.actionMoviesFragmentToSeeAllMoviesFragment(it)
                 )
@@ -49,6 +56,12 @@ class MoviesFragment : BaseFragment<MoviesFragmentBinding>() {
             })
         )
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        exitTransition = null
+        reenterTransition = null
     }
 
     private fun setUpLists() {

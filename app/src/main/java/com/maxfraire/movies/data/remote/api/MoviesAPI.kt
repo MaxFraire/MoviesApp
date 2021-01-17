@@ -6,7 +6,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.QueryMap
 
 interface MoviesAPI {
 
@@ -25,7 +24,6 @@ interface MoviesAPI {
         const val PATH_MOVIE_LIST_TYPE = "movie_list_type"
         const val PATH_MOVIE_ID = "movie_id"
         const val QUERY_PAGE = "page"
-        const val QUERY_PAGE_SIZE = "page_size"
         const val QUERY_CREDITS = "append_to_response=credits"
     }
 }

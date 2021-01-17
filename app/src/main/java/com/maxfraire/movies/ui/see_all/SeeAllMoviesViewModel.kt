@@ -49,7 +49,8 @@ class SeeAllMoviesViewModel @Inject constructor(
     }
 
     fun setListType(listType: MovieListTypeUI) {
-        _listType.postValue(listType)
+        if(_listType.value == null || _listType.value != listType)
+            _listType.postValue(listType)
     }
 
     fun navigateBack() {

@@ -56,6 +56,7 @@ dependencies {
     dependencies(Dependencies.network)
     dependencies(Dependencies.dagger)
     dependencies(Dependencies.coroutines)
+    dependencies(Dependencies.room)
     dependencies(Dependencies.glide)
     dependencies(Dependencies.threeTenAbp)
     dependencies(Dependencies.timber)
