@@ -40,12 +40,23 @@
         android:id="@+id/movieDetailsFragment"
         android:name="com.maxfraire.movies.ui.movie_details.MovieDetailsFragment"
         android:label="MovieDetailsFragment"
-        tools:layout="@layout/movie_details_fragment" >
+        tools:layout="@layout/movie_details_fragment">
 
         <argument
             android:name="movie"
             app:argType="integer"
-            app:nullable="false"/>
+            app:nullable="false" />
     </fragment>
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.maxfraire.movies.ui.favorites.FavoritesFragment"
+        android:label="FavoritesFragment">
+        <action
+            android:id="@+id/action_favoritesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+
+    </fragment>
+
 
 </navigation>

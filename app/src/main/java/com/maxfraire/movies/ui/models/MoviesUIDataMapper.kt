@@ -1,6 +1,5 @@
 package com.maxfraire.movies.ui.models
 
-import android.annotation.SuppressLint
 import com.maxfraire.movies.data.local.entities.CastEntity
 import com.maxfraire.movies.data.local.entities.MovieEntity
 import com.maxfraire.movies.data.local.entities.MovieWithCastEntity
@@ -38,9 +37,24 @@ class MoviesUIDataMapper @Inject constructor() {
             genres = movieWithCast.movie.genres.orEmpty().map { convert(it) },
             backdropPath = Constants.BASE_IMAGE_URL.plus(movieWithCast.movie.backdropPath.orEmpty()),
             posterPath = Constants.BASE_IMAGE_URL.plus(movieWithCast.movie.posterPath.orEmpty()),
-            cast = movieWithCast.cast.map{ convert(it) },
+            cast = movieWithCast.cast.map { convert(it) },
             isFavorite = movieWithCast.movie.isFavorite
         )
+
+    fun convert(entities: List<MovieEntity>): List<MovieUI> = entities.map { convert(it) }
+
+    fun convert(movieEntity: MovieEntity): MovieUI =
+        MovieUI(
+            id = movieEntity.id.orDefault(0),
+            title = movieEntity.title.orEmpty(),
+            releaseDate = movieEntity.releaseDate.orEmpty().getYear(),
+            voteAverage = movieEntity.voteAverage.orDefault(0f),
+            overview = movieEntity.overview.orEmpty(),
+            runtime = movieEntity.runtime ?: 0,
+            backdropPath = movieEntity.backdropPath.orEmpty(),
+            posterPath = Constants.BASE_IMAGE_URL.plus(movieEntity.posterPath.orEmpty())
+        )
+
 
     private fun convert(castEntity: CastEntity): CastUI =
         CastUI(

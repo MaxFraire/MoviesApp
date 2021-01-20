@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.maxfraire.movies.ui.see_all.SeeAllMoviesViewModel" />
+            type="com.maxfraire.movies.ui.base.BaseMovieListViewModel" />
 
         <variable
             name="movie"

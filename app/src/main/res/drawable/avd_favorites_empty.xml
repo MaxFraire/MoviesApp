@@ -28,35 +28,35 @@
             <set>
                 <objectAnimator
                     android:propertyName="trimPathEnd"
-                    android:startOffset="300"
-                    android:duration="300"
+                    android:duration="500"
+                    android:interpolator="@android:anim/linear_interpolator"
                     android:valueFrom="0"
                     android:valueTo="1"
                     android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
+                    android:startOffset="100" />
                 <objectAnimator
                     android:propertyName="trimPathOffset"
-                    android:startOffset="300"
-                    android:duration="300"
+                    android:duration="500"
+                    android:interpolator="@android:anim/linear_interpolator"
                     android:valueFrom="0"
                     android:valueTo="0.5"
                     android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
+                    android:startOffset="100" />
                 <objectAnimator
                     android:propertyName="fillAlpha"
-                    android:duration="400"
+                    android:duration="250"
                     android:valueFrom="1"
                     android:valueTo="0"
                     android:valueType="floatType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
                 <objectAnimator
                     android:propertyName="strokeAlpha"
-                    android:startOffset="300"
-                    android:duration="300"
+                    android:duration="500"
+                    android:interpolator="@android:anim/linear_interpolator"
                     android:valueFrom="0.1"
                     android:valueTo="1"
                     android:valueType="floatType"
-                    android:interpolator="@android:anim/linear_interpolator"/>
+                    android:startOffset="100" />
             </set>
         </aapt:attr>
     </target>

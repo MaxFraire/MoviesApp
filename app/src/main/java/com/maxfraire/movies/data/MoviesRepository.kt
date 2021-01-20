@@ -3,9 +3,13 @@ package com.maxfraire.movies.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.maxfraire.movies.data.common.*
+import com.maxfraire.movies.data.common.DataMapper
+import com.maxfraire.movies.data.common.NetworkBoundResource
+import com.maxfraire.movies.data.common.Resource
+import com.maxfraire.movies.data.common.getResource
 import com.maxfraire.movies.data.local.dao.CastDao
 import com.maxfraire.movies.data.local.dao.MoviesDao
+import com.maxfraire.movies.data.local.entities.MovieEntity
 import com.maxfraire.movies.data.local.entities.MovieWithCastEntity
 import com.maxfraire.movies.data.remote.api.MoviesAPI
 import com.maxfraire.movies.data.remote.models.MovieDTO
@@ -19,6 +23,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
+import timber.log.Timber
 import javax.inject.Inject
 
 @ApplicationScope
@@ -54,10 +59,11 @@ class MoviesRepository @Inject constructor(
                  item?.let {
                      moviesDao.insertMovie(mapper.convert(item))
                      castDao.insertCast(
-                         item.credits?.cast?.map {
-                                 cast -> mapper.convert(cast, it.id.orDefault(0))
+                         item.credits?.cast?.map { cast ->
+                             mapper.convert(cast, it.id.orDefault(0))
                          }.orEmpty()
                      )
+                     Timber.d("Movie inserted into the database")
                  }
              }
 
@@ -72,8 +78,13 @@ class MoviesRepository @Inject constructor(
 
          }.asFlow()
 
-    suspend fun setFavorite(movieId: Int, isFavorite: Boolean){
-       moviesDao.favoriteMovie(movieId, isFavorite)
+    suspend fun setFavorite(movieId: Int, isFavorite: Boolean) {
+        moviesDao.favoriteMovie(movieId, isFavorite)
+    }
+
+    fun getFavorites(): Flow<List<MovieEntity>> {
+        return moviesDao.getFavorites()
+            .flowOn(Dispatchers.IO)
     }
 
     private fun getDefaultPageConfig(): PagingConfig =

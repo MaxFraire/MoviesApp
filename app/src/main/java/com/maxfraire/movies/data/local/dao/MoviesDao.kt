@@ -18,7 +18,10 @@ interface MoviesDao {
     @Query("select * from MovieEntity where id = :movieId")
     fun getMovieWithCast(movieId: Int): Flow<MovieWithCastEntity?>
 
-    @Query("UPDATE MovieEntity SET is_favorite = :isFavorite WHERE id = :movieId")
+    @Query("update MovieEntity set is_favorite = :isFavorite where id = :movieId")
     suspend fun favoriteMovie(movieId: Int, isFavorite: Boolean): Int
+
+    @Query("select * from MovieEntity where is_favorite = 1")
+    fun getFavorites(): Flow<List<MovieEntity>>
 
 }

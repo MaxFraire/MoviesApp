@@ -36,20 +36,7 @@ data class MovieDetailsUI(
     val director: String = "",
     val cast: List<CastUI> = emptyList(),
     var isFavorite: Boolean = false
-){
-    override fun equals(other: Any?): Boolean =
-        (other is MovieDetailsUI) &&
-                other.id == id &&
-                other.title == title &&
-                other.posterPath == posterPath
-
-    override fun hashCode(): Int {
-        var result = id
-        result = 31 * result + posterPath.hashCode()
-        result = 31 * result + title.hashCode()
-        return result
-    }
-}
+)
 
 data class CastUI(
     val id: Int = 0,

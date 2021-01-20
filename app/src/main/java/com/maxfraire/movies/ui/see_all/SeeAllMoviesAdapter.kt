@@ -68,14 +68,14 @@ class SeeAllMoviesAdapter(
     }
 }
 
-private class GridViewHolder(private val binding: SeeAllMoviesTypeGridItemBinding) :
+class GridViewHolder(private val binding: SeeAllMoviesTypeGridItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(movie: MovieUI) {
         binding.movie = movie
     }
 }
 
-private class ListViewHolder(private val binding: SeeAllMoviesTypeListItemBinding) :
+class ListViewHolder(private val binding: SeeAllMoviesTypeListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(movie: MovieUI) {
         binding.movie = movie

@@ -1,6 +1,5 @@
 package com.maxfraire.movies.ui
 
-import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,10 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.transition.TransitionManager
-import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.transition.MaterialFadeThrough
-import com.maxfraire.movies.R
 
 object UIBindingAdapter {
 
@@ -64,12 +60,4 @@ object UIBindingAdapter {
             .into(view)
     }
 
-    @JvmStatic
-    @BindingAdapter("isFavorite")
-    fun setFavoriteIcon(view: FloatingActionButton, isFavorite: Boolean) {
-        view.setImageResource(
-            if(isFavorite) R.drawable.avd_favorites else R.drawable.avd_favorites_empty
-        )
-        (view.drawable as Animatable).start()
-    }
 }
