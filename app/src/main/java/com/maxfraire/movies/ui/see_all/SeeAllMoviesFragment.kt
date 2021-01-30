@@ -59,8 +59,8 @@ class SeeAllMoviesFragment : BaseFragment<SeeAllMoviesFragmentBinding>() {
         viewModel.displayGridLayout.observe(viewLifecycleOwner){ showGridLayout ->
             TransitionManager.beginDelayedTransition(binding.root as ViewGroup, MaterialFadeThrough())
             adapter.setViewType(
-                if (showGridLayout) R.layout.see_all_movies_type_grid_item
-                else R.layout.see_all_movies_type_list_item
+                if (showGridLayout) R.layout.movies_type_grid_item
+                else R.layout.movies_type_list_item
             )
             binding.rvSeeAllMovies.layoutManager =
                 if (showGridLayout) gridLayoutManager

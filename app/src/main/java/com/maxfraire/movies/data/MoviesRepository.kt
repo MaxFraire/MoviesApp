@@ -53,16 +53,25 @@ class MoviesRepository @Inject constructor(
             pagingSourceFactory = { moviesPagingSourceFactory.create(movieListType) }
         ).flow
 
-    fun getMovieById(movieId: Int) : Flow<Resource<MovieWithCastEntity?>> =
-         object: NetworkBoundResource<MovieWithCastEntity, MovieDTO>() {
-             override suspend fun saveNetworkResult(item: MovieDTO?) {
-                 item?.let {
-                     moviesDao.insertMovie(mapper.convert(item))
-                     castDao.insertCast(
-                         item.credits?.cast?.map { cast ->
-                             mapper.convert(cast, it.id.orDefault(0))
-                         }.orEmpty()
-                     )
+    fun searchMovie(
+        query: String,
+        pagingConfig: PagingConfig = getDefaultPageConfig()
+    ): Flow<PagingData<MovieDTO>> =
+        Pager(
+            config = pagingConfig,
+            pagingSourceFactory = { moviesPagingSourceFactory.create(query) }
+        ).flow
+
+    fun getMovieById(movieId: Int): Flow<Resource<MovieWithCastEntity?>> =
+        object : NetworkBoundResource<MovieWithCastEntity, MovieDTO>() {
+            override suspend fun saveNetworkResult(item: MovieDTO?) {
+                item?.let {
+                    moviesDao.insertMovie(mapper.convert(item))
+                    castDao.insertCast(
+                        item.credits?.cast?.map { cast ->
+                            mapper.convert(cast, it.id.orDefault(0))
+                        }.orEmpty()
+                    )
                      Timber.d("Movie inserted into the database")
                  }
              }

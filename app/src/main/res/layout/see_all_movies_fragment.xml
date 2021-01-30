@@ -74,7 +74,7 @@
             android:clipChildren="false"
             android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="@layout/see_all_movies_type_grid_item" />
+            tools:listitem="@layout/movies_type_grid_item" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

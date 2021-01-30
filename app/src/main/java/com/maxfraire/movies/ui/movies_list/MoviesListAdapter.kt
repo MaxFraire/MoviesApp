@@ -1,24 +1,23 @@
 package com.maxfraire.movies.ui.movies_list
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.maxfraire.movies.R
 import com.maxfraire.movies.databinding.MovieListItemBinding
 import com.maxfraire.movies.databinding.MovieListItemSeeAllBinding
+import com.maxfraire.movies.ui.base.AdapterUtils
 import com.maxfraire.movies.ui.models.MovieListTypeUI
 import com.maxfraire.movies.ui.models.MovieUI
 
 class MoviesListAdapter(
     private val viewModel: MoviesViewModel,
     private val listType: MovieListTypeUI
-) : ListAdapter<MovieUI, RecyclerView.ViewHolder>(MOVIE_COMPARATOR){
+) : ListAdapter<MovieUI, RecyclerView.ViewHolder>(AdapterUtils.MOVIE_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        when(viewType){
+        when (viewType) {
             R.layout.movie_list_item_see_all ->
                 SeeAllViewHolder(
                     MovieListItemSeeAllBinding.inflate(
@@ -50,21 +49,11 @@ class MoviesListAdapter(
     }
 
     override fun getItemViewType(position: Int): Int =
-        if(position == itemCount - 1)
+        if (position == itemCount.dec())
             R.layout.movie_list_item_see_all
         else
             R.layout.movie_list_item
 
-    companion object {
-        private val MOVIE_COMPARATOR = object : DiffUtil.ItemCallback<MovieUI>() {
-            override fun areItemsTheSame(oldItem: MovieUI, newItem: MovieUI): Boolean =
-                oldItem.id == newItem.id
-
-            @SuppressLint("DiffUtilEquals")
-            override fun areContentsTheSame(oldItem: MovieUI, newItem: MovieUI): Boolean =
-                oldItem == newItem
-        }
-    }
 }
 
 class MovieListViewHolder(private val binding: MovieListItemBinding)

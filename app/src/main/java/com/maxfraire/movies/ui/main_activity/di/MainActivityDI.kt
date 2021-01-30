@@ -12,6 +12,9 @@ import com.maxfraire.movies.ui.movie_details.di.MovieDetailsScope
 import com.maxfraire.movies.ui.movies_list.MoviesFragment
 import com.maxfraire.movies.ui.movies_list.di.MoviesFragmentModule
 import com.maxfraire.movies.ui.movies_list.di.MoviesFragmentScope
+import com.maxfraire.movies.ui.search.SearchFragment
+import com.maxfraire.movies.ui.search.di.SearchFragmentModule
+import com.maxfraire.movies.ui.search.di.SearchFragmentScope
 import com.maxfraire.movies.ui.see_all.SeeAllMoviesFragment
 import com.maxfraire.movies.ui.see_all.di.SeeAllMoviesFragmentModule
 import com.maxfraire.movies.ui.see_all.di.SeeAllMoviesFragmentScope
@@ -55,6 +58,10 @@ abstract class MainActivityFragmentsBuildersModule {
     @FavoritesScope
     @ContributesAndroidInjector(modules = [FavoritesFragmentModule::class])
     abstract fun contributeFavoritesFragment(): FavoritesFragment
+
+    @SearchFragmentScope
+    @ContributesAndroidInjector(modules = [SearchFragmentModule::class])
+    abstract fun contributeSearchFragment(): SearchFragment
 }
 
 @Scope

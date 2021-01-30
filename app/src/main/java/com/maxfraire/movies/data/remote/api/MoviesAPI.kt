@@ -20,10 +20,17 @@ interface MoviesAPI {
         @Path(PATH_MOVIE_ID) movieId: Int
     ): Response<MovieDTO>
 
+    @GET("/3/search/movie")
+    suspend fun searchMovie(
+        @Query(QUERY_SEARCH) query: String,
+        @Query(QUERY_PAGE) page: Int
+    ): Response<MoviesListDTO>
+
     companion object {
         const val PATH_MOVIE_LIST_TYPE = "movie_list_type"
         const val PATH_MOVIE_ID = "movie_id"
         const val QUERY_PAGE = "page"
         const val QUERY_CREDITS = "append_to_response=credits"
+        const val QUERY_SEARCH = "query"
     }
 }

@@ -35,7 +35,9 @@ class MoviesUIDataMapper @Inject constructor() {
             runtime = movieWithCast.movie.runtime.getFormattedRuntime(),
             director = movieWithCast.movie.director.orEmpty(),
             genres = movieWithCast.movie.genres.orEmpty().map { convert(it) },
-            backdropPath = Constants.BASE_IMAGE_URL.plus(movieWithCast.movie.backdropPath.orEmpty()),
+            backdropPath = movieWithCast.movie.backdropPath?.let {
+                Constants.BASE_IMAGE_URL.plus(it)
+            }.orEmpty(),
             posterPath = Constants.BASE_IMAGE_URL.plus(movieWithCast.movie.posterPath.orEmpty()),
             cast = movieWithCast.cast.map { convert(it) },
             isFavorite = movieWithCast.movie.isFavorite

@@ -17,4 +17,11 @@
     <string name="directed_by">Directed by <b>%s</b></string>
     <string name="cast">Cast</string>
 
+    <!-- Favorites -->
+    <string name="no_favorites">No favorites yet</string>
+
+    <!-- Search -->
+    <string name="search_movie">Search movie</string>
+    <string name="no_movies">No movies found</string>
+
 </resources>

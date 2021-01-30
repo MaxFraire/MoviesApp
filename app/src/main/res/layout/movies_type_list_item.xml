@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <variable
+        name="viewModel"
+        type="com.maxfraire.movies.ui.base.BaseMovieListViewModel" />
+
+    <variable
+        name="movie"
+        type="com.maxfraire.movies.ui.models.MovieUI" />
+
+</data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_movie_list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="@{() -> viewModel.navigateToMovieDetails(movie.id)}"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_poster"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/content_description_poster"
+                app:imageUrl="@{movie.posterPath}"
+                app:shapeAppearance="?shapeAppearanceSmallComponent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_movie_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:text="@{movie.title}"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toEndOf="@id/iv_poster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_poster"
+                tools:text="Inception "/>
+
+            <TextView
+                android:id="@+id/tv_release"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{movie.releaseDate}"
+                android:textAppearance="?textAppearanceBody1"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/color_on_surface_disabled"
+                app:layout_constraintStart_toStartOf="@id/tv_movie_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_movie_title"
+                tools:text="2020"/>
+
+            <TextView
+                android:id="@+id/tv_vote_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="4dp"
+                android:drawableTint="?colorPrimary"
+                android:gravity="center_vertical"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/color_on_surface_disabled"
+                android:text="@{String.valueOf(movie.voteAverage)}"
+                app:visible="@{movie.voteAverage > 0}"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintBottom_toBottomOf="@id/iv_poster"
+                app:layout_constraintStart_toStartOf="@id/tv_release"
+                app:layout_constraintTop_toBottomOf="@+id/tv_release"
+                tools:text="8.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -17,7 +17,6 @@ open class BaseMovieListViewModel() : ViewModel() {
         _navigateToMovieDetails.value = Event(movieId)
     }
 
-
     fun navigateBack() {
         _navigateBack.value = Event(Any())
     }

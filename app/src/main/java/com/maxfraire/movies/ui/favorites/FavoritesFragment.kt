@@ -43,8 +43,8 @@ class FavoritesFragment : BaseFragment<FavoritesFragmentBinding>() {
                 MaterialFadeThrough()
             )
             adapter.setViewType(
-                if (showGridLayout) R.layout.see_all_movies_type_grid_item
-                else R.layout.see_all_movies_type_list_item
+                if (showGridLayout) R.layout.movies_type_grid_item
+                else R.layout.movies_type_list_item
             )
             binding.rvFavorites.layoutManager =
                 if (showGridLayout) gridLayoutManager

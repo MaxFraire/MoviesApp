@@ -1,27 +1,26 @@
 package com.maxfraire.movies.ui.see_all
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.maxfraire.movies.R
-import com.maxfraire.movies.databinding.SeeAllMoviesTypeGridItemBinding
-import com.maxfraire.movies.databinding.SeeAllMoviesTypeListItemBinding
+import com.maxfraire.movies.databinding.MoviesTypeGridItemBinding
+import com.maxfraire.movies.databinding.MoviesTypeListItemBinding
+import com.maxfraire.movies.ui.base.AdapterUtils
 import com.maxfraire.movies.ui.models.MovieUI
 
 class SeeAllMoviesAdapter(
     private val viewModel: SeeAllMoviesViewModel
-) : PagingDataAdapter<MovieUI, RecyclerView.ViewHolder>(MOVIE_COMPARATOR) {
-    private var viewType = R.layout.see_all_movies_type_grid_item
+) : PagingDataAdapter<MovieUI, RecyclerView.ViewHolder>(AdapterUtils.MOVIE_COMPARATOR) {
+    private var viewType = R.layout.movies_type_grid_item
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        when(viewType) {
-            R.layout.see_all_movies_type_list_item ->
+        when (viewType) {
+            R.layout.movies_type_list_item ->
                 ListViewHolder(
-                    SeeAllMoviesTypeListItemBinding.inflate(
+                    MoviesTypeListItemBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -31,7 +30,7 @@ class SeeAllMoviesAdapter(
                 )
             else ->
                 GridViewHolder(
-                    SeeAllMoviesTypeGridItemBinding.inflate(
+                    MoviesTypeGridItemBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -55,27 +54,16 @@ class SeeAllMoviesAdapter(
     fun setViewType(@LayoutRes viewType: Int){
         this.viewType = viewType
     }
-
-    companion object {
-        private val MOVIE_COMPARATOR = object : DiffUtil.ItemCallback<MovieUI>() {
-            override fun areItemsTheSame(oldItem: MovieUI, newItem: MovieUI): Boolean =
-                oldItem.id == newItem.id
-
-            @SuppressLint("DiffUtilEquals")
-            override fun areContentsTheSame(oldItem: MovieUI, newItem: MovieUI): Boolean =
-                oldItem == newItem
-        }
-    }
 }
 
-class GridViewHolder(private val binding: SeeAllMoviesTypeGridItemBinding) :
+class GridViewHolder(private val binding: MoviesTypeGridItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(movie: MovieUI) {
         binding.movie = movie
     }
 }
 
-class ListViewHolder(private val binding: SeeAllMoviesTypeListItemBinding) :
+class ListViewHolder(private val binding: MoviesTypeListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(movie: MovieUI) {
         binding.movie = movie
