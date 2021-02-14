@@ -39,7 +39,7 @@ class MoviesUIDataMapper @Inject constructor() {
                 Constants.BASE_IMAGE_URL.plus(it)
             }.orEmpty(),
             posterPath = Constants.BASE_IMAGE_URL.plus(movieWithCast.movie.posterPath.orEmpty()),
-            cast = movieWithCast.cast.map { convert(it) },
+            cast = movieWithCast.cast.sortedBy { it.order }.map { convert(it) },
             isFavorite = movieWithCast.movie.isFavorite
         )
 

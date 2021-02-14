@@ -3,9 +3,10 @@
 
     <!--  Main  -->
     <string name="movies">Movies</string>
-    <string name="tv_shows">TV Shows</string>
+    <string name="discover">Discover</string>
     <string name="favorites">Favorites</string>
     <string name="search">Search</string>
+    <string name="top_rated">Top Rated</string>
 
     <!--  Movies List  -->
     <string name="popular">Popular</string>

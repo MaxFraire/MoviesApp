@@ -17,6 +17,8 @@ data class CastEntity(
     val profilePath: String? = null,
     @ColumnInfo(name = "character")
     val character: String? = null,
+    @ColumnInfo(name = "order")
+    val order: Int? = null,
     @ColumnInfo(name = "movie_id")
     val movieId: Int? = null
 )

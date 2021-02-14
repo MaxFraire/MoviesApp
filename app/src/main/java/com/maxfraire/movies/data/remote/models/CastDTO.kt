@@ -13,6 +13,8 @@ data class CastDTO(
     val name: String? = null,
     @SerializedName(value = "profile_path")
     val profilePath: String? = null,
+    @SerializedName(value = "order")
+    val order: Int? = null,
     @SerializedName(value = "character")
     val character: String? = null
 )

@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface MoviesAPI {
 
-    @GET("/3/movie/{$PATH_MOVIE_LIST_TYPE}")
+    @GET("/3/movie/{$PATH_MOVIE_LIST_TYPE}?language=en-US")
     suspend fun fetchMovies(
         @Path(PATH_MOVIE_LIST_TYPE) listType: String,
         @Query(QUERY_PAGE) page: Int

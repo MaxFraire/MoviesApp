@@ -35,6 +35,7 @@ class DataMapper @Inject constructor() {
             name = castDto.name,
             profilePath = castDto.profilePath,
             character = castDto.character,
+            order = castDto.order,
             movieId = movieId
         )
 

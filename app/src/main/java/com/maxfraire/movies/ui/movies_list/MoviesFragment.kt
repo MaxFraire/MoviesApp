@@ -17,6 +17,7 @@ class MoviesFragment : BaseFragment<MoviesFragmentBinding>() {
     private val viewModel: MoviesViewModel by viewModels { viewModelFactory }
     private lateinit var popularMoviesAdapter: MoviesListAdapter
     private lateinit var upcomingMoviesAdapter: MoviesListAdapter
+    private lateinit var topRatedMoviesAdapter: MoviesListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,6 +31,10 @@ class MoviesFragment : BaseFragment<MoviesFragmentBinding>() {
 
         viewModel.upcomingMovies.observe(viewLifecycleOwner) {
             upcomingMoviesAdapter.submitList(it)
+        }
+
+        viewModel.topRatedMovies.observe(viewLifecycleOwner) {
+            topRatedMoviesAdapter.submitList(it)
         }
 
         viewModel.navigateToSeeAll.observe(
@@ -72,6 +77,10 @@ class MoviesFragment : BaseFragment<MoviesFragmentBinding>() {
         upcomingMoviesAdapter = MoviesListAdapter(viewModel, MovieListTypeUI.Upcoming)
         binding.rvUpcoming.adapter = upcomingMoviesAdapter
         binding.rvUpcoming.setHasFixedSize(true)
+
+        topRatedMoviesAdapter = MoviesListAdapter(viewModel, MovieListTypeUI.TopRated)
+        binding.rvTopRated.adapter = topRatedMoviesAdapter
+        binding.rvTopRated.setHasFixedSize(true)
     }
 
     override val layoutResId: Int

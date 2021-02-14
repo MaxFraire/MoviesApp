@@ -10,11 +10,13 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.material.transition.MaterialSharedAxis
 import com.maxfraire.movies.R
 import com.maxfraire.movies.databinding.MovieDetailsFragmentBinding
 import com.maxfraire.movies.ui.base.BaseFragment
 import com.maxfraire.movies.ui.movie_details.adapters.CastAdapter
 import com.maxfraire.movies.ui.movie_details.adapters.GenresAdapter
+import com.maxfraire.movies.util.Constants
 import com.maxfraire.movies.util.EventObserver
 
 class MovieDetailsFragment : BaseFragment<MovieDetailsFragmentBinding>() {
@@ -22,6 +24,16 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsFragmentBinding>() {
     private val viewModel: MovieDetailsViewModel by viewModels { viewModelFactory }
     private lateinit var genresAdapter: GenresAdapter
     private lateinit var castAdapter: CastAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+            duration = Constants.SHARED_AXIS_X_DURATION
+        }
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+            duration = Constants.SHARED_AXIS_X_DURATION
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

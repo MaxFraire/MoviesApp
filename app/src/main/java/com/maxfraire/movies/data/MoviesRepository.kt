@@ -35,7 +35,7 @@ class MoviesRepository @Inject constructor(
     private val moviesPagingSourceFactory: MoviePagingSourceFactory
 ) {
 
-    suspend fun getMovies(movieListType: MovieListType, page: Int): Flow<Resource<MoviesListDTO?>> =
+    fun getMovies(movieListType: MovieListType, page: Int): Flow<Resource<MoviesListDTO?>> =
         flow {
             emit(Resource.Loading(null))
             val response = getResource {
@@ -68,7 +68,7 @@ class MoviesRepository @Inject constructor(
                 item?.let {
                     moviesDao.insertMovie(mapper.convert(item))
                     castDao.insertCast(
-                        item.credits?.cast?.map { cast ->
+                        item.credits?.cast?.take(CAST_SIZE)?.map { cast ->
                             mapper.convert(cast, it.id.orDefault(0))
                         }.orEmpty()
                     )
@@ -97,9 +97,14 @@ class MoviesRepository @Inject constructor(
     }
 
     private fun getDefaultPageConfig(): PagingConfig =
-        PagingConfig(pageSize = DEFAULT_PAGE_SIZE, enablePlaceholders = false)
+        PagingConfig(
+            pageSize = DEFAULT_PAGE_SIZE,
+            enablePlaceholders = false,
+            prefetchDistance = DEFAULT_PAGE_SIZE * 2
+        )
 
     companion object {
         private const val DEFAULT_PAGE_SIZE = 20
+        private const val CAST_SIZE = 12
     }
 }

@@ -25,6 +25,9 @@ class MoviesViewModel @Inject constructor(
     private val _upcomingMovies: MutableLiveData<List<MovieUI>> = MutableLiveData()
     val upcomingMovies: LiveData<List<MovieUI>> = _upcomingMovies
 
+    private val _topRatedMovies: MutableLiveData<List<MovieUI>> = MutableLiveData()
+    val topRatedMovies: LiveData<List<MovieUI>> = _topRatedMovies
+
     private val _navigateToSeeAll = MutableLiveData<Event<MovieListTypeUI>>()
     val navigateToSeeAll = _navigateToSeeAll
 
@@ -50,6 +53,15 @@ class MoviesViewModel @Inject constructor(
                         })
                     }
                 }
+
+            moviesRepository.getMovies(mapper.convert(MovieListTypeUI.TopRated), FIRST_PAGE)
+                .collect { response ->
+                    response.doIfSuccess {
+                        _topRatedMovies.postValue(it?.results?.map { movie ->
+                            mapper.convert(movie)
+                        })
+                    }
+                }
         }
     }
 
@@ -63,6 +75,10 @@ class MoviesViewModel @Inject constructor(
 
     fun navigateToSeeAllUpcomingMovies() {
         navigateToSeeAllFragment(MovieListTypeUI.Upcoming)
+    }
+
+    fun navigateToSeeAllTopRatedMovies() {
+        navigateToSeeAllFragment(MovieListTypeUI.TopRated)
     }
 
     fun navigateToSeeAllFragment(movieListType: MovieListTypeUI) {

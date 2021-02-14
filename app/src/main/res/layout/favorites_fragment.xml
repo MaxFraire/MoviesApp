@@ -30,25 +30,18 @@
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|enterAlways">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/b_back"
-                    style="@style/Widget.MoviesApp.Button.TextButton.IconButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:text="@string/favorites"
-                    android:textAppearance="?textAppearanceHeadline5"
-                    app:layout_constraintBottom_toBottomOf="@id/b_back"
-                    app:layout_constraintStart_toEndOf="@id/b_back"
-                    app:layout_constraintTop_toTopOf="@id/b_back" />
+                    android:textAppearance="?textAppearanceHeadline4"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/b_list_type"
@@ -58,9 +51,9 @@
                     android:layout_marginEnd="16dp"
                     android:onClick="@{() -> viewModel.toggleLayoutManager()}"
                     app:icon="@{viewModel.displayGridLayout? @drawable/ic_list : @drawable/ic_grid}"
-                    app:layout_constraintBottom_toBottomOf="@id/b_back"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/b_back" />
+                    app:layout_constraintTop_toTopOf="@id/tv_title" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
